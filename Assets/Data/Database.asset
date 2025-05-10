@@ -16,4 +16,11 @@ MonoBehaviour:
   - <Name>k__BackingField: bar
     <ID>k__BackingField: 0
     <Size>k__BackingField: {x: 10, y: 3, z: 2}
-    <Prefab>k__BackingField: {fileID: 789644065977514321, guid: 0bf19c88dec86274d94a5a6b6ded719e, type: 3}
+    <Prefab>k__BackingField: {fileID: 114775768923940290, guid: 55d18fcd34a5c4a49a104e13b97ab48d, type: 3}
+    <ObjectType>k__BackingField: 2
+  - <Name>k__BackingField: cash register
+    <ID>k__BackingField: 1
+    <Size>k__BackingField: {x: 1, y: 1, z: 1}
+    <Prefab>k__BackingField: {fileID: 981892341912583508, guid: 60af9de84c996ee4880b4f1ee52d6555, type: 3}
+    <ObjectType>k__BackingField: 3
+  gridSize: {x: 12, y: 12}

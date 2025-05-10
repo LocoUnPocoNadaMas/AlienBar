@@ -5,8 +5,9 @@ using UnityEngine.EventSystems;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private Camera sceneCamera;
-    private Vector3 _lastPosition;
     [SerializeField] private LayerMask layerMask;
+    private Vector3 lastPosition;
+
     public event Action OnClicked, OnExit;
 
     private void Update()
@@ -15,7 +16,8 @@ public class InputManager : MonoBehaviour
         {
             OnClicked?.Invoke();
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             OnExit?.Invoke();
         }
@@ -25,21 +27,19 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        GD.Assert(sceneCamera != null, "sceneCamera null");
-        GD.Assert(layerMask != 0, "layerMask null");
+        Debug.Assert(layerMask != 0, "layerMask == 0?");
     }
 
     public Vector3 GetSelectedMapPosition()
     {
-        Vector3 mousePos = Input.mousePosition;
+        var mousePos = Input.mousePosition;
         mousePos.z = sceneCamera.nearClipPlane;
-        Ray ray = sceneCamera.ScreenPointToRay(mousePos);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 100, layerMask))
+        var ray = sceneCamera.ScreenPointToRay(mousePos);
+        if (Physics.Raycast(ray, out var hit, 100, layerMask))
         {
-            _lastPosition = hit.point;
+            lastPosition = hit.point;
         }
 
-        return _lastPosition;
+        return lastPosition;
     }
 }
